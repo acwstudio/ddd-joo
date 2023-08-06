@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+declare(strict_types=1);
 
-use App\Http\Controllers\Controller;
+namespace App\Http\Web\Controllers\Auth;
+
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class AuthenticatedSessionController extends Controller
+final class AuthenticatedSessionController
 {
     /**
      * Display the login view.
