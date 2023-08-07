@@ -85,6 +85,11 @@ return [
                 'log',
             ],
         ],
+        'from' => [
+            'address' => env('MAIL_FROM_ADDRESS', 'admin@myapp.com'),
+            'name' => env('MAIL_FROM_NAME', 'Admin'),
+        ],
+//        'reply_to' => ['address' => 'example@example.com', 'name' => 'App Name'],
     ],
 
     /*
