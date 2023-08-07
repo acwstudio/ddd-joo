@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+declare(strict_types=1);
 
-use App\Http\Controllers\Controller;
-use App\Models\User;
+namespace App\Http\Web\Controllers\Auth;
+
 use App\Providers\RouteServiceProvider;
+use Domain\Shared\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Validation\Rules;
 
-class RegisteredUserController extends Controller
+final class RegisteredUserController
 {
     /**
      * Display the registration view.

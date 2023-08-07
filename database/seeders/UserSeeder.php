@@ -16,4 +16,6 @@ class UserSeeder extends Seeder
         $users = User::factory()->count(3)->make();
         dd($users);
     }
+
+
 }

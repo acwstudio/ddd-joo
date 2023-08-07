@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+declare(strict_types=1);
 
-use App\Http\Controllers\Controller;
+namespace App\Http\Web\Controllers\Auth;
+
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -10,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class PasswordResetLinkController extends Controller
+final class PasswordResetLinkController
 {
     /**
      * Display the password reset link request view.
