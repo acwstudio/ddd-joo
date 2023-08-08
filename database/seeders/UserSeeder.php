@@ -13,6 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        User::truncate();
         $users = User::factory()->count(3)->make();
         dd($users);
     }
