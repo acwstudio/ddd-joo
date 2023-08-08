@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Web\Controllers\GetDashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,9 +26,25 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', GetDashboardController::class)->name('dashboard');
+
+//    Route::resource('subscribers', SubscriberController::class);
+//    Route::post('subscribers/import', ImportSubscribersController::class);
+//
+//    Route::resource('broadcasts', BroadcastController::class);
+//    Route::patch('broadcasts/{broadcast}/send', SendBroadcastController::class);
+//    Route::get('broadcasts/{broadcast}/preview', PreviewBroadcastController::class);
+//
+//    Route::resource('sequences', SequenceController::class);
+//    Route::get('sequences/{sequence}/reports', GetSequenceReportController::class);
+//    Route::patch('sequences/{sequence}/publish', PublishSequenceController::class);
+//
+//    Route::resource('sequences/{sequence}/mails', SequenceMailController::class);
+//    Route::get('sequences/{sequence}/mails/{mail}/preview', PreviewSequenceMailController::class);
+//
+//    Route::resource('automations', AutomationController::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
