@@ -1,26 +1,19 @@
-<script setup>
+<script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 
-// export default {
-//     components: {
-//         AuthenticatedLayout,
-//         Head,
-//     },
-//     props: {
-//         model: {
-//             type: Object,
-//             required: true,
-//         },
-//     },
-// }
-
-defineProps({
-    model: {
-        type: Object,
-        required: true,
-    }
-})
+export default {
+    components: {
+        AuthenticatedLayout,
+        Head,
+    },
+    props: {
+        model: {
+            type: Object,
+            required: true,
+        },
+    },
+}
 </script>
 
 <template>
