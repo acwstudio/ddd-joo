@@ -35,4 +35,9 @@ final class Subscriber extends BaseModel
     {
         return new SubscriberBuilder($query);
     }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }
