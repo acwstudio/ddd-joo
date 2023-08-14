@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Subscriber;
 
+use Domain\Shared\Models\User;
 use Domain\Subscriber\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -11,6 +12,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class TagFactory extends Factory
 {
     /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Tag::class;
+
+    /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
@@ -18,7 +26,8 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->words(3, true),
+            'user_id' => User::factory(),
         ];
     }
 }
