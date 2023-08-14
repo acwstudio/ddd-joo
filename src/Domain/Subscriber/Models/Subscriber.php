@@ -8,8 +8,13 @@ use Domain\Shared\Models\BaseModel;
 use Domain\Shared\Models\Concerns\HasUser;
 use Domain\Subscriber\Builders\SubscriberBuilder;
 use Domain\Subscriber\DataTransferObjects\SubscriberData;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Spatie\LaravelData\WithData;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 final class Subscriber extends BaseModel
 {
@@ -39,5 +44,50 @@ final class Subscriber extends BaseModel
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function broadcasts(): BelongsToMany
+    {
+//        return $this->belongsToMany(Broadcast::class);
+    }
+
+    public function form(): BelongsTo
+    {
+        return $this->belongsTo(Form::class)
+            ->withDefault();
+    }
+
+    public function received_mails(): HasMany
+    {
+//        return $this->hasMany(SentMail::class);
+    }
+
+    public function last_received_mail(): HasOne
+    {
+//        return $this->hasOne(SentMail::class)
+//            ->latestOfMany()
+//            ->withDefault();
+    }
+
+    public function sequences(): BelongsToMany
+    {
+//        return $this->belongsToMany(Sequence::class)->withPivot('subscribed_at');
+    }
+
+    public function sent_mails(): HasMany
+    {
+//        return $this->hasMany(SentMail::class);
+    }
+
+//    public function tooEarlyFor(SequenceMail $mail): bool
+//    {
+//        return !$mail->enoughTimePassedSince($this->last_received_mail);
+//    }
+
+    public function fullName(): Attribute
+    {
+        return new Attribute(
+            get: fn () => "{$this->first_name} {$this->last_name}",
+        );
     }
 }
