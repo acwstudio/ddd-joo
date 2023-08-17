@@ -33,7 +33,7 @@ final class Subscriber extends BaseModel
     ];
 
     protected $casts = [
-        'id' => 'integer',
+        'id' => 'integer'
     ];
 
     public function newEloquentBuilder($query): SubscriberBuilder
