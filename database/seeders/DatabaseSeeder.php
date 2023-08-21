@@ -9,8 +9,10 @@ use Database\Seeders\Mail\SequenceSeeder;
 use Database\Seeders\Subscriber\SubscriberSeeder;
 use Domain\Shared\Models\User;
 use Domain\Subscriber\Models\Form;
+use Domain\Subscriber\Models\Subscriber;
 use Domain\Subscriber\Models\Tag;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
@@ -27,6 +29,8 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Tag::truncate();
         Form::truncate();
+        Subscriber::truncate();
+        DB::table('subscriber_tag')->truncate();
         Schema::enableForeignKeyConstraints();
 
         User::factory([

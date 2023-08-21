@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Web\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Web\Controllers\Auth\PasswordController;
 use App\Http\Web\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Web\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Web\Controllers\Auth\EmailVerificationPromptController;

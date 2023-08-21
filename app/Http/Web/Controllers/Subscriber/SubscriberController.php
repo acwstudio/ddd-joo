@@ -21,7 +21,7 @@ final class SubscriberController
     public function index(Request $request): Response
     {
         return Inertia::render('Subscriber/List', [
-            'model' => new GetSubscribersViewModel($request->get('page', 1)),
+            'model' => new GetSubscribersViewModel(intval($request->get('page', 1))),
         ]);
     }
 
