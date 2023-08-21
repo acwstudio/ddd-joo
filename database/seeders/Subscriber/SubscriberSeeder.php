@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Database\Seeders\Subscriber;
 
+use Carbon\Carbon;
 use Database\Seeders\DatabaseSeeder;
 use Domain\Subscriber\Models\Form;
+use Domain\Subscriber\Models\Subscriber;
 use Domain\Subscriber\Models\Tag;
 use Illuminate\Support\Collection;
 
@@ -22,6 +24,23 @@ final class SubscriberSeeder extends DatabaseSeeder
         $forms = $this->forms()->map(fn (string $title) =>
         Form::factory(compact('title'))->for($demoUser)->create()
         );
+
+        $subscribers = $this->range(1, 200)->map(fn () =>
+        Subscriber::factory([
+            'form_id' => $this->byChance(0.67, $forms, fn (Collection $forms) => $forms->random()),
+            'subscribed_at' => $this->last30Days(),
+        ])
+            ->for($demoUser)
+            ->create()
+        );
+
+        $subscribers->each(function (Subscriber $subscriber) use ($tags) {
+            $this->byChance(0.67, $tags, fn (Collection $tags) =>
+            $tags
+                ->take(rand(1, 10))
+                ->each(fn (Tag $tag) => $subscriber->tags()->attach($tag->id))
+            );
+        });
     }
 
     /**
