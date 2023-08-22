@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Web\Controllers\GetDashboardController;
+use App\Http\Web\Controllers\Subscriber\ImportSubscribersController;
 use App\Http\Web\Controllers\Subscriber\SubscriberController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', GetDashboardController::class)->name('dashboard');
 
     Route::resource('subscribers', SubscriberController::class);
-//    Route::post('subscribers/import', ImportSubscribersController::class);
+    Route::post('subscribers/import', ImportSubscribersController::class);
 //
 //    Route::resource('broadcasts', BroadcastController::class);
 //    Route::patch('broadcasts/{broadcast}/send', SendBroadcastController::class);
