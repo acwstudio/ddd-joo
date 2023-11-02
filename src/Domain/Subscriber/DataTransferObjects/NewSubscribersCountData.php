@@ -13,5 +13,6 @@ final class NewSubscribersCountData extends Data
         public readonly int $this_month,
         public readonly int $this_week,
         public readonly int $today,
-    ) {}
+    ) {
+    }
 }

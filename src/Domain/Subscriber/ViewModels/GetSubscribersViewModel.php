@@ -6,8 +6,8 @@ namespace Domain\Subscriber\ViewModels;
 
 use Domain\Shared\ViewModels\ViewModel;
 use Domain\Subscriber\Models\Subscriber;
-use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 
 final class GetSubscribersViewModel extends ViewModel
 {
@@ -24,8 +24,7 @@ final class GetSubscribersViewModel extends ViewModel
         $items = Subscriber::with(['form', 'tags'])
             ->orderBy('first_name')
             ->get()
-            ->map
-            ->getData();
+            ->map(fn (Subscriber $subscriber, $key) => $subscriber->getData());
 
         $items = $items->slice(self::PER_PAGE * ($this->currentPage - 1));
 

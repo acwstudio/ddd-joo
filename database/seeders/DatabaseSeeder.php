@@ -42,9 +42,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             SubscriberSeeder::class,
-//            BroadcastSeeder::class,
-//            SequenceSeeder::class,
-//            AutomationSeeder::class,
+            //            BroadcastSeeder::class,
+            //            SequenceSeeder::class,
+            //            AutomationSeeder::class,
         ]);
     }
 

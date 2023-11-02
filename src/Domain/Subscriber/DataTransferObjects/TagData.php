@@ -16,7 +16,8 @@ final class TagData extends Data
         public readonly string $title,
         /** @var DataCollection<SubscriberData> */
         public readonly null|Lazy|DataCollection $subscribers,
-    ) {}
+    ) {
+    }
 
     public static function fromModel(Tag $tag): self
     {

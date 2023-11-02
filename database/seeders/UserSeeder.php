@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Domain\Shared\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -15,8 +14,6 @@ class UserSeeder extends Seeder
     {
         User::truncate();
         $users = User::factory()->count(3)->make();
-        dd($users);
+//        dd($users);
     }
-
-
 }

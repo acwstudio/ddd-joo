@@ -8,11 +8,8 @@ use Carbon\Carbon;
 use Domain\Subscriber\Models\Form;
 use Domain\Subscriber\Models\Subscriber;
 use Domain\Subscriber\Models\Tag;
-use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Spatie\LaravelData\Attributes\WithCast;
-use Spatie\LaravelData\Casts\DateTimeInterfaceCast;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\Lazy;
@@ -29,7 +26,7 @@ final class SubscriberData extends Data
         /** @var DataCollection<TagData> */
         public readonly null|Lazy|DataCollection $tags,
         public readonly null|Lazy|FormData $form,
-    ) {}
+    ){}
 
     public static function fromRequest(Request $request): self
     {

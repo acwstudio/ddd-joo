@@ -33,19 +33,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('subscribers', SubscriberController::class);
     Route::post('subscribers/import', ImportSubscribersController::class);
-//
-//    Route::resource('broadcasts', BroadcastController::class);
-//    Route::patch('broadcasts/{broadcast}/send', SendBroadcastController::class);
-//    Route::get('broadcasts/{broadcast}/preview', PreviewBroadcastController::class);
-//
-//    Route::resource('sequences', SequenceController::class);
-//    Route::get('sequences/{sequence}/reports', GetSequenceReportController::class);
-//    Route::patch('sequences/{sequence}/publish', PublishSequenceController::class);
-//
-//    Route::resource('sequences/{sequence}/mails', SequenceMailController::class);
-//    Route::get('sequences/{sequence}/mails/{mail}/preview', PreviewSequenceMailController::class);
-//
-//    Route::resource('automations', AutomationController::class);
+    //
+    //    Route::resource('broadcasts', BroadcastController::class);
+    //    Route::patch('broadcasts/{broadcast}/send', SendBroadcastController::class);
+    //    Route::get('broadcasts/{broadcast}/preview', PreviewBroadcastController::class);
+    //
+    //    Route::resource('sequences', SequenceController::class);
+    //    Route::get('sequences/{sequence}/reports', GetSequenceReportController::class);
+    //    Route::patch('sequences/{sequence}/publish', PublishSequenceController::class);
+    //
+    //    Route::resource('sequences/{sequence}/mails', SequenceMailController::class);
+    //    Route::get('sequences/{sequence}/mails/{mail}/preview', PreviewSequenceMailController::class);
+    //
+    //    Route::resource('automations', AutomationController::class);
 });
 
 Route::middleware('auth')->group(function () {
