@@ -12,5 +12,6 @@ final class FormData extends Data
         public readonly ?int $id,
         public readonly string $title,
         public readonly string $content,
-    ) {}
+    ) {
+    }
 }

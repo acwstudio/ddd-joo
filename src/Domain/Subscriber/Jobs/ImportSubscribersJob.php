@@ -19,7 +19,8 @@ final class ImportSubscribersJob implements ShouldQueue
     public function __construct(
         private readonly string $path,
         private readonly User $user,
-    ) {}
+    ) {
+    }
 
     public function handle()
     {

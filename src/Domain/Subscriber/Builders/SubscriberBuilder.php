@@ -15,8 +15,8 @@ final class SubscriberBuilder extends Builder
         return $this->whereBetween('subscribed_at', $dateFilter->toArray());
     }
 
-//    public function alreadyReceived(SequenceMail $mail): bool
-//    {
-//        return $this->model->received_mails()->whereSendable($mail)->exists();
-//    }
+    //    public function alreadyReceived(SequenceMail $mail): bool
+    //    {
+    //        return $this->model->received_mails()->whereSendable($mail)->exists();
+    //    }
 }

@@ -17,16 +17,13 @@ final class SubscriberSeeder extends DatabaseSeeder
     {
         $demoUser = $this->demoUser();
 
-        $tags = $this->tags()->map(fn (string $title) =>
-        Tag::factory(compact('title'))->for($demoUser)->create()
+        $tags = $this->tags()->map(fn (string $title) => Tag::factory(compact('title'))->for($demoUser)->create()
         );
 
-        $forms = $this->forms()->map(fn (string $title) =>
-        Form::factory(compact('title'))->for($demoUser)->create()
+        $forms = $this->forms()->map(fn (string $title) => Form::factory(compact('title'))->for($demoUser)->create()
         );
 
-        $subscribers = $this->range(1, 200)->map(fn () =>
-        Subscriber::factory([
+        $subscribers = $this->range(1, 200)->map(fn () => Subscriber::factory([
             'form_id' => $this->byChance(0.67, $forms, fn (Collection $forms) => $forms->random()),
             'subscribed_at' => $this->last30Days(),
         ])
@@ -35,8 +32,7 @@ final class SubscriberSeeder extends DatabaseSeeder
         );
 
         $subscribers->each(function (Subscriber $subscriber) use ($tags) {
-            $this->byChance(0.67, $tags, fn (Collection $tags) =>
-            $tags
+            $this->byChance(0.67, $tags, fn (Collection $tags) => $tags
                 ->take(rand(1, 10))
                 ->each(fn (Tag $tag) => $subscriber->tags()->attach($tag->id))
             );

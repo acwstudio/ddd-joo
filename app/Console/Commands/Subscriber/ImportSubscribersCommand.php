@@ -11,6 +11,7 @@ use Illuminate\Console\Command;
 final class ImportSubscribersCommand extends Command
 {
     protected $signature = 'subscriber:import {user? : The ID of the user}';
+
     protected $description = 'Import subscribers from csv';
 
     public function handle()
@@ -22,7 +23,7 @@ final class ImportSubscribersCommand extends Command
             User::findOrFail($userId),
         );
 
-        $this->info("Subscribers are being imported...");
+        $this->info('Subscribers are being imported...');
 
         return self::SUCCESS;
     }

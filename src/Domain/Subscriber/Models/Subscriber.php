@@ -8,13 +8,15 @@ use Domain\Shared\Models\BaseModel;
 use Domain\Shared\Models\Concerns\HasUser;
 use Domain\Subscriber\Builders\SubscriberBuilder;
 use Domain\Subscriber\DataTransferObjects\SubscriberData;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
+use Spatie\LaravelData\Contracts\DataObject;
 use Spatie\LaravelData\WithData;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 final class Subscriber extends BaseModel
 {
@@ -22,7 +24,7 @@ final class Subscriber extends BaseModel
     use WithData;
     use HasUser;
 
-    protected $dataClass = SubscriberData::class;
+    protected string $dataClass = SubscriberData::class;
 
     protected $fillable = [
         'email',
@@ -33,8 +35,13 @@ final class Subscriber extends BaseModel
     ];
 
     protected $casts = [
-        'id' => 'integer'
+        'id' => 'integer',
     ];
+
+    public static function query(): SubscriberBuilder|Builder
+    {
+        return parent::query();
+    }
 
     public function newEloquentBuilder($query): SubscriberBuilder
     {
@@ -48,7 +55,7 @@ final class Subscriber extends BaseModel
 
     public function broadcasts(): BelongsToMany
     {
-//        return $this->belongsToMany(Broadcast::class);
+        //        return $this->belongsToMany(Broadcast::class);
     }
 
     public function form(): BelongsTo
@@ -59,30 +66,30 @@ final class Subscriber extends BaseModel
 
     public function received_mails(): HasMany
     {
-//        return $this->hasMany(SentMail::class);
+        //        return $this->hasMany(SentMail::class);
     }
 
     public function last_received_mail(): HasOne
     {
-//        return $this->hasOne(SentMail::class)
-//            ->latestOfMany()
-//            ->withDefault();
+        //        return $this->hasOne(SentMail::class)
+        //            ->latestOfMany()
+        //            ->withDefault();
     }
 
     public function sequences(): BelongsToMany
     {
-//        return $this->belongsToMany(Sequence::class)->withPivot('subscribed_at');
+        //        return $this->belongsToMany(Sequence::class)->withPivot('subscribed_at');
     }
 
     public function sent_mails(): HasMany
     {
-//        return $this->hasMany(SentMail::class);
+        //        return $this->hasMany(SentMail::class);
     }
 
-//    public function tooEarlyFor(SequenceMail $mail): bool
-//    {
-//        return !$mail->enoughTimePassedSince($this->last_received_mail);
-//    }
+    //    public function tooEarlyFor(SequenceMail $mail): bool
+    //    {
+    //        return !$mail->enoughTimePassedSince($this->last_received_mail);
+    //    }
 
     public function fullName(): Attribute
     {

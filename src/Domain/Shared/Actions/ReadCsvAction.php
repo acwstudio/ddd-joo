@@ -22,6 +22,7 @@ final class ReadCsvAction
             $rowIdx++;
             if ($rowIdx === 0) {
                 $columns = $data;
+
                 continue;
             }
 
@@ -34,18 +35,20 @@ final class ReadCsvAction
         }
 
         fclose($stream);
+
         return collect($rows);
     }
 
     /**
-     * @throws Exception
      * @return resource
+     *
+     * @throws Exception
      */
     private static function openFile(string $path)
     {
         $stream = fopen($path, 'r');
         if ($stream === false) {
-            throw new Exception('Unable to open csv file at ' . $path);
+            throw new Exception('Unable to open csv file at '.$path);
         }
 
         return $stream;

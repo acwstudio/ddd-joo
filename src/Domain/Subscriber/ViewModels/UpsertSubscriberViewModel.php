@@ -21,7 +21,7 @@ final class UpsertSubscriberViewModel extends ViewModel
 
     public function subscriber(): ?SubscriberData
     {
-        if (!$this->subscriber) {
+        if (! $this->subscriber) {
             return null;
         }
 

@@ -32,8 +32,7 @@ final class ImportSubscribersAction
     }
 
     /**
-     * @param string[] $row
-     * @param User $user
+     * @param  string[]  $row
      * @return Tag[]
      */
     private static function parseTags(array $row, User $user): array
@@ -46,8 +45,7 @@ final class ImportSubscribersAction
     }
 
     /**
-     * @param string[] $tags
-     * @param User $user
+     * @param  string[]  $tags
      * @return Tag[]
      */
     private static function getOrCreateTags(array $tags, User $user): array

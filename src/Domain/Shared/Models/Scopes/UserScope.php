@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Scope;
 
 final class UserScope implements Scope
 {
-    public function apply(Builder $builder, Model $model)
+    public function apply(Builder $builder, Model $model): void
     {
         $user = request()->user();
 
